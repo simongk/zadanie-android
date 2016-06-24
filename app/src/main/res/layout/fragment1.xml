@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pl.simongk.application_testexercise.Fragment1"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <Button
+        android:text="+"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addButton"
+        android:background="@color/background_floating_material_light"
+        android:layout_marginEnd="44dp"
+        android:layout_marginTop="148dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="http://www.google.com"
+        android:id="@+id/httpEditText"
+        android:layout_marginLeft="30dp"
+        android:layout_alignBottom="@+id/addButton"
+        android:layout_toStartOf="@+id/addButton" />
+
+
+    <Button
+        android:text="Usun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_below="@+id/httpEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,18 @@
+# --table-start--
+dataClass=pl.simongk.application_testexercise.UrlItem
+tableName=urls
+# --table-fields-start--
+fieldName=id
+columnName=url_id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=shortUrl
+columnName=short_url
+# --field-end--
+# --field-start--
+fieldName=longUrl
+columnName=long_url
+# --field-end--
+# --table-fields-end--
+# --table-end--
