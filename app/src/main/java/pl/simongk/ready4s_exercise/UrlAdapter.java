@@ -1,4 +1,4 @@
-package pl.simongk.application_testexercise;
+package pl.simongk.ready4s_exercise;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,12 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-
 import com.j256.ormlite.dao.Dao;
 
 import java.util.List;
-
-
 
 /**
  * Created by simongk on 24.06.16.

@@ -1,4 +1,4 @@
-package pl.simongk.application_testexercise;
+package pl.simongk.ready4s_exercise;
 
 /**
  * Created by simongk on 24.06.16.
@@ -6,7 +6,9 @@ package pl.simongk.application_testexercise;
 
 
 import com.google.gson.Gson;
+
 import java.io.IOException;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;

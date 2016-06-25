@@ -1,22 +1,19 @@
-package pl.simongk.application_testexercise;
+package pl.simongk.ready4s_exercise;
 
 
-
+import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
-
 
 import java.sql.SQLException;
 
@@ -28,26 +25,27 @@ public class Fragment1 extends Fragment {
 
     private EditText httpEditText;
     private Button addButton;
-    private Button button;
-    private TextView textView;
     private String longURL;
     private String shortURL;
+
+    public Fragment1() {
+        // Required empty public constructor
+    }
 
     public String getLongURL() {
         return longURL;
     }
+
     public void setLongURL(String longURL) {
         this.longURL = longURL;
     }
+
     public String getShortURL() {
         return shortURL;
     }
+
     public void setShortURL(String shortURL) {
         this.shortURL = shortURL;
-    }
-
-    public Fragment1() {
-        // Required empty public constructor
     }
 
     @Override
@@ -57,7 +55,6 @@ public class Fragment1 extends Fragment {
         View view = inflater.inflate(R.layout.fragment1, container, false);
         httpEditText = (EditText) view.findViewById(R.id.httpEditText);
         addButton = (Button) view.findViewById(R.id.addButton);
-        button = (Button) view.findViewById(R.id.button);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +69,6 @@ public class Fragment1 extends Fragment {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().deleteDatabase("UrlsDB.db");
-            }
-        });
         return view;
     }
 

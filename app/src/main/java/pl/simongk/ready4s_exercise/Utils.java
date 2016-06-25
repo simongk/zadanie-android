@@ -1,4 +1,4 @@
-package pl.simongk.application_testexercise;
+package pl.simongk.ready4s_exercise;
 
 /**
  * Created by simongk on 24.06.16.

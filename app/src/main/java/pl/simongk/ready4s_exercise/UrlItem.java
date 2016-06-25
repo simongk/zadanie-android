@@ -1,4 +1,4 @@
-package pl.simongk.application_testexercise;
+package pl.simongk.ready4s_exercise;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -12,14 +12,12 @@ import java.io.Serializable;
 public class UrlItem implements Serializable{
 
 
-    @DatabaseField(generatedId = true, columnName = "url_id")
-    private int id;
-
     @DatabaseField(columnName = "short_url")
     public String shortUrl;
-
     @DatabaseField(columnName = "long_url")
     public  String longUrl;
+    @DatabaseField(generatedId = true, columnName = "url_id")
+    private int id;
 
     public UrlItem(){}
 

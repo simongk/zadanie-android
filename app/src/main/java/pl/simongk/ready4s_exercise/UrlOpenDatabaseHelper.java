@@ -1,4 +1,4 @@
-package pl.simongk.application_testexercise;
+package pl.simongk.ready4s_exercise;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

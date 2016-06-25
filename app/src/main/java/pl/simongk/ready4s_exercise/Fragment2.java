@@ -1,35 +1,22 @@
-package pl.simongk.application_testexercise;
+package pl.simongk.ready4s_exercise;
 
 
-import android.app.Dialog;
+import android.app.Fragment;
 import android.app.ListFragment;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.stmt.query.In;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static android.R.id.list;
 
 
 /**
@@ -46,10 +33,10 @@ public class Fragment2 extends ListFragment {
         // Required empty public constructor
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return String.valueOf(urlItemList);
-    }
+    }*/
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -68,9 +55,12 @@ public class Fragment2 extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment2, container, false);
+
         urlOpenDatabaseHelper = OpenHelperManager
                 .getHelper(getActivity(),UrlOpenDatabaseHelper.class);
+
         try {
             urlItems = urlOpenDatabaseHelper.getDao();
             urlItemList=urlItems.queryForAll();

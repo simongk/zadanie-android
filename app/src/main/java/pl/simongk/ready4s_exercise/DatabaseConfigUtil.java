@@ -1,4 +1,4 @@
-package pl.simongk.application_testexercise;
+package pl.simongk.ready4s_exercise;
 
 import com.j256.ormlite.android.apptools.OrmLiteConfigUtil;
 

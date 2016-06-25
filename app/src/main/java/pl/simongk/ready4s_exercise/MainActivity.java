@@ -1,42 +1,35 @@
-package pl.simongk.application_testexercise;
+package pl.simongk.ready4s_exercise;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
-
-
-
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView mDrawerList;
-    private ArrayAdapter<String> mAdapter;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerLayout;
+    private ListView drawerList;
+    private ArrayAdapter<String> drawerAdapter;
+    private ActionBarDrawerToggle drawerToggle;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mDrawerList = (ListView) findViewById(R.id.navList);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerList = (ListView) findViewById(R.id.navList);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         //changeFragments(new Fragment1());
 
         addDrawerItems();
@@ -61,28 +54,28 @@ public class MainActivity extends AppCompatActivity {
         * */
     private void addDrawerItems(){
         final String[] fragmentArray = {"Fragment 1","Fragment 2"};
-        mAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,fragmentArray);
-        mDrawerList.setAdapter(mAdapter);
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        drawerAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,fragmentArray);
+        drawerList.setAdapter(drawerAdapter);
+        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String item = mAdapter.getItem(position);
+                String item = drawerAdapter.getItem(position);
                 if(item.equals("Fragment 1")) {
                     getSupportActionBar().setTitle("Fragment 1");
                     changeFragments(new Fragment1());
-                    mDrawerLayout.closeDrawer(GravityCompat.START);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
                 else if(item.equals("Fragment 2")) {
                     getSupportActionBar().setTitle("Fragment 2");
                     changeFragments(new Fragment2());
-                    mDrawerLayout.closeDrawer(GravityCompat.START);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
     }
 
     private void setupDrawer(){
-        mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.drawer_open,
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.drawer_open,
                 R.string.drawer_close){
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -97,20 +90,20 @@ public class MainActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         };
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
+        drawerToggle.setDrawerIndicatorEnabled(true);
+        drawerLayout.addDrawerListener(drawerToggle);
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
+        drawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
@@ -122,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(mDrawerToggle.onOptionsItemSelected(item)){
+        if(drawerToggle.onOptionsItemSelected(item)){
             return true;
         }
 

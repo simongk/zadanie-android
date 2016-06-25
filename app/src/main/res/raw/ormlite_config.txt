@@ -1,5 +1,5 @@
 # --table-start--
-dataClass=pl.simongk.application_testexercise.UrlItem
+dataClass=pl.simongk.ready4s_exercise.UrlItem
 tableName=urls
 # --table-fields-start--
 fieldName=id
