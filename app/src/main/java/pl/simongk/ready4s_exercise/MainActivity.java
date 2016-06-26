@@ -20,9 +20,11 @@ import android.widget.ListView;
 public class MainActivity extends AppCompatActivity {
 
     private ListView drawerList;
-    private ArrayAdapter<String> drawerAdapter;
+    private ArrayAdapter < String > drawerAdapter;
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
+    private Fragment1 fragment1;
+    private Fragment2 fragment2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,57 +32,61 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         drawerList = (ListView) findViewById(R.id.navList);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //changeFragments(new Fragment1());
+        fragment1 = new Fragment1();
+        fragment2 = new Fragment2();
+        changeFragments(fragment1);
 
         addDrawerItems();
         setupDrawer();
 
-        getSupportActionBar().setTitle("Menu");
+        getSupportActionBar().setTitle("Fragment 1");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
 
-    private void changeFragments(Fragment fragment){
+    private void changeFragments(Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.main,fragment);
+        transaction.replace(R.id.main, fragment);
         transaction.commit();
     }
 
 
     /*
-        * adding items to nav bar
-        * */
-    private void addDrawerItems(){
-        final String[] fragmentArray = {"Fragment 1","Fragment 2"};
-        drawerAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,fragmentArray);
+     * adding items to nav bar
+     * */
+    private void addDrawerItems() {
+        final String[] fragmentArray = {
+                "Fragment 1",
+                "Fragment 2"
+        };
+        drawerAdapter = new ArrayAdapter <> (this, android.R.layout.simple_list_item_1, fragmentArray);
         drawerList.setAdapter(drawerAdapter);
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView < ? > parent, View view, int position, long id) {
                 String item = drawerAdapter.getItem(position);
-                if(item.equals("Fragment 1")) {
+                if (item.equals("Fragment 1")) {
                     getSupportActionBar().setTitle("Fragment 1");
-                    changeFragments(new Fragment1());
+                    changeFragments(fragment1);
                     drawerLayout.closeDrawer(GravityCompat.START);
-                }
-                else if(item.equals("Fragment 2")) {
+                } else if (item.equals("Fragment 2")) {
                     getSupportActionBar().setTitle("Fragment 2");
-                    changeFragments(new Fragment2());
+                    changeFragments(fragment2);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
     }
 
-    private void setupDrawer(){
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.drawer_open,
-                R.string.drawer_close){
+    private void setupDrawer() {
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open,
+                R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle("Menu");
+                super.onDrawerOpened(drawerView);
                 invalidateOptionsMenu();
             }
 
@@ -108,17 +114,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(drawerToggle.onOptionsItemSelected(item)){
-            return true;
-        }
+        return drawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
 }

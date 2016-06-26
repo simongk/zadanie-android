@@ -14,25 +14,26 @@ import java.util.List;
 /**
  * Created by simongk on 24.06.16.
  */
-public class UrlAdapter extends ArrayAdapter<UrlItem> {
+public class UrlAdapter extends ArrayAdapter < UrlItem > {
 
-    private List<UrlItem> records;
-    private Dao<UrlItem,Integer> urlDao;
+    private List < UrlItem > records;
+    private Dao < UrlItem,
+            Integer > urlDao;
 
-    public UrlAdapter(Context context, int resource, List<UrlItem> objects,
-                      Dao<UrlItem,Integer> urlDao) {
+    public UrlAdapter(Context context, int resource, List < UrlItem > objects,
+                      Dao < UrlItem, Integer > urlDao) {
         super(context, resource, objects);
-        this.records=objects;
-        this.urlDao=urlDao;
+        this.records = objects;
+        this.urlDao = urlDao;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final UrlItem urlItem = records.get(position);
 
-        if(convertView == null) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item,
-                    parent,false);
+                    parent, false);
         }
 
         TextView shortUrl = (TextView) convertView.findViewById(R.id.shortUrl);

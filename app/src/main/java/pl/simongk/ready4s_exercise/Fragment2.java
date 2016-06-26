@@ -26,22 +26,20 @@ public class Fragment2 extends ListFragment {
 
     private UrlOpenDatabaseHelper urlOpenDatabaseHelper;
     private ListView listView;
-    private Dao<UrlItem,Integer> urlItems;
-    private List<UrlItem> urlItemList;
+    private Dao < UrlItem, Integer > urlItems;
+    private List < UrlItem > urlItemList;
 
     public Fragment2() {
         // Required empty public constructor
     }
 
-    /*@Override
-    public String toString() {
-        return String.valueOf(urlItemList);
-    }*/
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
+
+
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
@@ -58,15 +56,16 @@ public class Fragment2 extends ListFragment {
 
         View view = inflater.inflate(R.layout.fragment2, container, false);
 
+
         urlOpenDatabaseHelper = OpenHelperManager
-                .getHelper(getActivity(),UrlOpenDatabaseHelper.class);
+                .getHelper(getActivity(), UrlOpenDatabaseHelper.class);
 
         try {
             urlItems = urlOpenDatabaseHelper.getDao();
-            urlItemList=urlItems.queryForAll();
+            urlItemList = urlItems.queryForAll();
             listView = (ListView) view.findViewById(android.R.id.list);
             listView.setClickable(true);
-            UrlAdapter ua = new UrlAdapter(getActivity(),R.layout.list_item,urlItemList,urlItems);
+            UrlAdapter ua = new UrlAdapter(getActivity(), R.layout.list_item, urlItemList, urlItems);
             setListAdapter(ua);
 
         } catch (SQLException e) {

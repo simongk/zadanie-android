@@ -60,21 +60,21 @@ public class Fragment1 extends Fragment {
             @Override
             public void onClick(View v) {
                 String linkUrl = httpEditText.getText().toString();
-                if(Patterns.WEB_URL.matcher(linkUrl).matches()){
-                setLongURL(linkUrl);
-                new MyTask(getLongURL())
-                        .execute();
-                Toast.makeText(getActivity(),"URL is ok! :)",Toast.LENGTH_SHORT).show();}
-                else Toast.makeText(getActivity(),"Wrong URL :(",Toast.LENGTH_SHORT).show();
+                if (Patterns.WEB_URL.matcher(linkUrl).matches()) {
+                    setLongURL(linkUrl);
+                    new MyTask(getLongURL())
+                            .execute();
+                    Toast.makeText(getActivity(), "URL is ok! :)", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(getActivity(), "Wrong URL :(", Toast.LENGTH_SHORT).show();
             }
         });
 
         return view;
     }
 
-   public UrlOpenDatabaseHelper getHelper() {
+    public UrlOpenDatabaseHelper getHelper() {
         UrlOpenDatabaseHelper urlOpenDatabaseHelper = OpenHelperManager
-                .getHelper(getActivity(),UrlOpenDatabaseHelper.class);
+                .getHelper(getActivity(), UrlOpenDatabaseHelper.class);
         return urlOpenDatabaseHelper;
     }
 
@@ -86,7 +86,7 @@ public class Fragment1 extends Fragment {
 
     public void addingtoDatabase() {
         try {
-            final Dao<UrlItem, Integer> urlItems = getHelper().getDao();
+            final Dao < UrlItem, Integer > urlItems = getHelper().getDao();
             UrlItem urlItem = new UrlItem(getShortURL(), getLongURL());
             urlItems.create(urlItem);
         } catch (SQLException e) {
@@ -94,7 +94,7 @@ public class Fragment1 extends Fragment {
         }
     }
 
-        private class MyTask extends AsyncTask<Void,Void,String> {
+    private class MyTask extends AsyncTask < Void, Void, String > {
 
         final String url1;
         public MyTask(String url1) {
@@ -102,7 +102,7 @@ public class Fragment1 extends Fragment {
         }
 
         @Override
-        protected String doInBackground(Void... params) {
+        protected String doInBackground(Void...params) {
             return UrlShortener.shortUrl(url1);
         }
 

@@ -28,7 +28,7 @@ public class UrlShortener {
                 .build();
         try {
             Response response = okHttpClient.newCall(request).execute();
-            if(!response.isSuccessful()) return null;
+            if (!response.isSuccessful()) return null;
             String responseStr = response.body().string();
             ResponseModel responseModel = gson.fromJson(responseStr, ResponseModel.class);
             return responseModel.getId();
